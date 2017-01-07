@@ -7,6 +7,8 @@ package com.mycompany.activemq;
 
 import com.mycompany.activemq.constants.ActiveMQConnectionSettings;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.jms.Connection;
 import javax.jms.JMSException;
@@ -14,9 +16,11 @@ import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import java.util.Random;
 
 public class Producer {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(Producer.class);
 
     public static void main(String[] args) throws JMSException {
 
@@ -36,14 +40,17 @@ public class Producer {
 
         MessageProducer messageProducer = session.createProducer(queue);
 
-        // create a message to send
-        TextMessage textMessage = session.createTextMessage("Hello, World!");
+        while (true) {
+            // create a message to send
+            TextMessage textMessage = session.createTextMessage("Generated random number: " + new Random().nextInt());
 
-        // send the message
-        messageProducer.send(textMessage);
+            // send the message
+            LOGGER.info(Producer.class.getName() + " - Sending message: {}", textMessage.getText());
+            messageProducer.send(textMessage);
+        }
 
-        connection.stop();
+        //connection.stop();
 
-        System.exit(0);
+        //System.exit(0);
     }
 }

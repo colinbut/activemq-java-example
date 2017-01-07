@@ -36,15 +36,13 @@ public class Consumer {
 
         MessageConsumer messageConsumer = session.createConsumer(queue);
 
-        int messages = 0;
-        while (messages < 10) {
+        while (true) {
             TextMessage textMessage = (TextMessage) messageConsumer.receive();
-            LOGGER.info("message #" + messages + ":" + textMessage.getText());
-            messages++;
+            LOGGER.info(Consumer.class.getName() + " - message #" + " : " + textMessage.getText());
         }
 
-        connection.stop();
+        //connection.stop();
 
-        System.exit(0);
+        //System.exit(0);
     }
 }
