@@ -31,7 +31,7 @@ public class Consumer {
 
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
-        Queue queue = session.createQueue("test_queue");
+        Queue queue = session.createQueue(ActiveMQConnectionSettings.getActiveMQQueueDestination());
 
         MessageConsumer messageConsumer = session.createConsumer(queue);
 

@@ -36,7 +36,7 @@ public class Producer {
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
         // create destination (queue)
-        Queue queue = session.createQueue("test_queue");
+        Queue queue = session.createQueue(ActiveMQConnectionSettings.getActiveMQQueueDestination());
 
         MessageProducer messageProducer = session.createProducer(queue);
 
