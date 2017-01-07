@@ -3,7 +3,7 @@
  * | Copyright © 2016 Colin But. All rights reserved. 
  * |-------------------------------------------------
  */
-package com.mycompany.activemq;
+package com.mycompany.activemq.producer;
 
 import com.mycompany.activemq.constants.ActiveMQConnectionSettings;
 import org.apache.activemq.ActiveMQConnectionFactory;

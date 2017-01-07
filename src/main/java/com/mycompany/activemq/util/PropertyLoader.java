@@ -16,12 +16,13 @@ public class PropertyLoader {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertyLoader.class);
 
+    private static final String ACTIVEMQ_PROPERTY_FILENAME = "activemq.properties";
+
     public static String loadProperty(String propertyKey) {
         Properties properties = new Properties();
 
-        String fileName = "activemq.properties";
         String propertValue = "";
-        try (InputStream inputStream = PropertyLoader.class.getClassLoader().getResourceAsStream(fileName)) {
+        try (InputStream inputStream = PropertyLoader.class.getClassLoader().getResourceAsStream(ACTIVEMQ_PROPERTY_FILENAME)) {
 
             if (inputStream == null) {
                 String errorMesage = "Unable to load property value for: {}";

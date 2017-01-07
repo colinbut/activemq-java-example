@@ -3,10 +3,9 @@
  * | Copyright © 2016 Colin But. All rights reserved. 
  * |-------------------------------------------------
  */
-package com.mycompany.activemq;
+package com.mycompany.activemq.consumer;
 
 import com.mycompany.activemq.constants.ActiveMQConnectionSettings;
-import com.mycompany.activemq.util.PropertyLoader;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
