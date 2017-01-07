@@ -6,6 +6,8 @@
 package com.mycompany.activemq;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.jms.Connection;
 import javax.jms.JMSException;
@@ -15,6 +17,8 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 
 public class Consumer {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Consumer.class);
 
     private static final String ACTIVEMQ_URL = "tcp://localhost";
     private static final int ACTIVEMQ_PORT = 61616; //default port
@@ -36,7 +40,7 @@ public class Consumer {
         int messages = 0;
         while (messages < 10) {
             TextMessage textMessage = (TextMessage) messageConsumer.receive();
-            System.out.println("message #" + messages + ":" + textMessage.getText());
+            LOGGER.info("message #" + messages + ":" + textMessage.getText());
             messages++;
         }
 
