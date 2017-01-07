@@ -5,6 +5,7 @@
  */
 package com.mycompany.activemq;
 
+import com.mycompany.activemq.constants.ActiveMQConnectionSettings;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.Connection;
@@ -16,13 +17,11 @@ import javax.jms.TextMessage;
 
 public class Producer {
 
-    private static final String ACTIVEMQ_URL = "tcp://localhost";
-    private static final int ACTIVEMQ_PORT = 61616; //default port
 
     public static void main(String[] args) throws JMSException {
 
         // initialise a connection factory for establishing connections to the broker
-        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL + ":" + ACTIVEMQ_PORT);
+        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ActiveMQConnectionSettings.buildActiveMQConnectionURL());
 
         // establish the connection to the ActiveMQ broker
         Connection connection = activeMQConnectionFactory.createConnection();

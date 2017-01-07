@@ -5,6 +5,8 @@
  */
 package com.mycompany.activemq;
 
+import com.mycompany.activemq.constants.ActiveMQConnectionSettings;
+import com.mycompany.activemq.util.PropertyLoader;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,12 +22,9 @@ public class Consumer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Consumer.class);
 
-    private static final String ACTIVEMQ_URL = "tcp://localhost";
-    private static final int ACTIVEMQ_PORT = 61616; //default port
-
     public static void main(String[] args) throws JMSException {
 
-        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL + ":" + ACTIVEMQ_PORT);
+        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ActiveMQConnectionSettings.buildActiveMQConnectionURL());
 
         Connection connection = activeMQConnectionFactory.createConnection();
 
